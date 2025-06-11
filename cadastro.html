@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro | Tech Solutions</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    .password-container {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    .password-container input {
+      width: 100%;
+      padding-right: 2.5rem;
+      box-sizing: border-box;
+    }
+    .senha-toggle {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.25rem;
+      color: #8e3451;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .senha-toggle:hover {
+      color: #702a42;
+    }
+
+    .ja-conta {
+      margin-top: 15px;
+      color: #444;
+      display: flex;
+      align-items: center;
+    }
+    .ja-conta a {
+      color: #8a2b58;
+      text-decoration: none;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+    .ja-conta a:hover {
+      text-decoration: underline;
+    }
+    .ja-conta i {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo"><h1>tech solution</h1></div>
+    <div class="menu">
+      <a href="index.html">Início</a>
+      <a href="servicos.html">Serviços</a>
+      <a href="pecas.html">Peças e Acessórios</a>
+      <a href="orcamentos.html">Orçamentos</a>
+    </div>
+    <div class="icones">
+      <a href="carrinho.html"><i class="fas fa-shopping-cart"></i></a>
+      <a href="login.html"><i class="fas fa-user"></i></a>
+    </div>
+  </nav>
+
+  <section class="form-orcamento-container">
+    <form id="form-cadastro" class="form-orcamento" action="php/cadastro.php" method="POST">
+      <h2><i class="fas fa-user-plus"></i> Cadastro</h2>
+      <p>Preencha os campos para criar sua conta.</p>
+
+      <label><i class="fas fa-user"></i> Nome Completo:</label>
+      <input type="text" name="nome" placeholder="Digite seu nome completo" required>
+
+      <label><i class="fas fa-envelope"></i> E-mail:</label>
+      <input type="email" name="email" placeholder="Digite seu e-mail" required>
+
+      <label><i class="fas fa-user"></i> Nome de Usuário:</label>
+      <input type="text" name="usuario" placeholder="Crie um nome de usuário" required>
+
+      <label><i class="fas fa-lock"></i> Senha:</label>
+      <div class="password-container">
+        <input
+          type="password"
+          id="senha"
+          name="senha"
+          placeholder="Crie uma senha"
+          required
+          pattern="^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,}$"
+          title="Mín. 8 caracteres, 1 maiúscula e 1 caractere especial.">
+        <i class="fa-solid fa-eye senha-toggle" data-target="senha"></i>
+      </div>
+
+      <label><i class="fas fa-lock"></i> Confirmar Senha:</label>
+      <div class="password-container">
+        <input
+          type="password"
+          id="confirma_senha"
+          name="confirma_senha"
+          placeholder="Confirme sua senha"
+          required>
+        <i class="fa-solid fa-eye senha-toggle" data-target="confirma_senha"></i>
+      </div>
+
+      <button type="submit" class="contact-btn">Cadastrar</button>
+
+      <p class="ja-conta">
+        <i class="fas fa-sign-in-alt"></i>
+        Já tem uma conta?
+        <a href="login.html">Faça login aqui</a>
+      </p>
+    </form>
+  </section>
+
+  <script>
+  document.querySelectorAll('.senha-toggle').forEach(icon => {
+    icon.addEventListener('click', () => {
+      const input = document.getElementById(icon.dataset.target);
+      input.type = input.type === 'password' ? 'text' : 'password';
+      icon.classList.toggle('fa-eye');
+      icon.classList.toggle('fa-eye-slash');
+    });
+  });
+
+  const senhaEl    = document.getElementById('senha');
+  const confirmaEl = document.getElementById('confirma_senha');
+
+  function validaSenhas() {
+    if (!confirmaEl.value) {
+      confirmaEl.setCustomValidity('');
+      return;
+    }
+    if (senhaEl.value !== confirmaEl.value) {
+      confirmaEl.setCustomValidity('As senhas não conferem');
+    } else {
+      confirmaEl.setCustomValidity('');
+    }
+    confirmaEl.reportValidity();
+  }
+
+  senhaEl.addEventListener('input', validaSenhas);
+  confirmaEl.addEventListener('input', validaSenhas);
+
+  document.getElementById('form-cadastro').addEventListener('submit', e => {
+    if (senhaEl.value !== confirmaEl.value) {
+      e.preventDefault();
+      Swal.fire({
+        icon: 'error',
+        title: 'Ops...',
+        text: 'As senhas não conferem!',
+        confirmButtonColor: '#8e3451'
+      });
+    }
+  });
+
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('sucesso')) {
+    Swal.fire({
+      icon: 'success',
+      title: 'Cadastro Realizado!',
+      text: 'Sua conta foi criada com sucesso.',
+      confirmButtonColor: '#8e3451'
+    }).then(() => {
+      window.location.href = 'login.html';
+    });
+  }
+</script>
+
+  <script src="script.js"></script>
+</body>
+</html>

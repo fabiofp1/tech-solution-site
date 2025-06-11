@@ -1,0 +1,121 @@
+<?php
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tech Solution</title>
+  <meta name="description"
+        content="Compre consoles clássicos, fitas VHS, walkmans, disquetes e outros eletrônicos retrô. Reviva a nostalgia com tecnologia vintage de qualidade!">
+  <meta name="keywords"
+        content="tecnologia retrô, eletrônicos antigos, consoles clássicos, fitas VHS, disquetes, walkman, videogames antigos, colecionáveis">
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+  <?php include __DIR__ . '/php/header.php'; ?>
+
+  <header class="header">
+    <div class="headline">
+      <h2 class="subtitulo">conheça a melhor</h2>
+      <h1 class="titulo-principal">assistência técnica</h1>
+      <p class="descricao-hero">
+        A Tech Solution é uma assistência técnica especializada em hardware e software para computadores, notebooks,
+        smartphones e tablets. Com técnicos certificados, oferece diagnóstico rápido, reparos e upgrades
+        (memória, processador) com orçamento prévio e acompanhamento transparente. Também realiza instalação e
+        manutenção de redes e segurança digital, garantindo atendimento ágil, prazos claros e 90 dias de garantia
+        em todos os serviços.
+      </p>
+      <a href="pecas.php" class="contact-btn">busque aqui</a>
+    </div>
+    <div class="img-headline">
+      <img src="img/play.jpg" alt="Consoles retrô">
+    </div>
+  </header>
+
+  <section class="section">
+    <h2>O que podemos fazer por você?</h2>
+    <div class="serviços">
+      <div class="card">
+        <i class="fas fa-tools icone-servico"></i>
+        <h3>Conserto e Diagnóstico</h3>
+        <p>Identificamos e resolvemos problemas em smartphones, notebooks, consoles e mais. Atendimento rápido e diagnóstico gratuito.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-microchip icone-servico"></i>
+        <h3>Upgrade de Equipamentos</h3>
+        <p>Deixe seu dispositivo mais rápido com upgrades de SSD, memória RAM e componentes modernos. Ideal para quem quer desempenho sem trocar de máquina.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-air-freshener icone-servico"></i>
+        <h3>Limpeza e Manutenção Preventiva</h3>
+        <p>Removemos poeira, trocamos pasta térmica e prevenimos superaquecimento. Mantenha seu dispositivo funcionando como novo por mais tempo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="depoimentos">
+    <h2>O que nossos clientes dizem</h2>
+    <div class="depoimento-container">
+      <div class="depoimento">
+        <img src="img/fabio.png" alt="Fábio Ferraz">
+        <div class="texto">
+          <p>"Serviço excelente! Meu notebook voltou a funcionar como se estivesse novo."</p>
+          <span>- Fábio Ferraz</span>
+        </div>
+      </div>
+      <div class="depoimento">
+        <img src="img/bruno.png" alt="Bruno Pires">
+        <div class="texto">
+          <p>"Atendimento rápido e preço justo. Recomendo!"</p>
+          <span>- Bruno Pires</span>
+        </div>
+      </div>
+      <div class="depoimento">
+        <img src="img/neto.png" alt="Neto Xavier">
+        <div class="texto">
+          <p>"Muito profissionalismo e qualidade. Fiquei satisfeito!"</p>
+          <span>- Neto Xavier</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <h2>Perguntas Frequentes</h2>
+    <div class="faq-container">
+      <div class="faq-item">
+        <details>
+          <summary>Quanto tempo demora um conserto?</summary>
+          <p>Depende do problema, mas normalmente entre 24 e 72 horas.</p>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>Quais marcas vocês atendem?</summary>
+          <p>Trabalhamos com Apple, Samsung, Dell, HP e outras grandes marcas.</p>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>Vocês fazem orçamento gratuito?</summary>
+          <p>Sim, fazemos um diagnóstico gratuito do problema antes de iniciar o serviço.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <?php include __DIR__ . '/php/footer.php'; ?>
+
+  <button id="btnTopo" title="Voltar ao topo">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
