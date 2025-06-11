@@ -15,6 +15,8 @@ Este é um projeto de site institucional desenvolvido para uma assistência téc
 
 - HTML5
 - CSS3
+- Javascript
+- Php
 - Google Fonts (Ubuntu e Bebas Neue)
 - Layout mobile-first com media queries
 
